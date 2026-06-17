@@ -1,0 +1,275 @@
+body {
+  font-family: sans-serif;
+  background: #1e1e1e;
+  color: white;
+  padding: 20px;
+}
+input[type="text"] {
+  width: 7em;
+}
+input[type="number"] {
+  width: 6ch;
+}
+.container {
+  display: flex;
+  gap: 20px;
+}
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.page-header h1 {
+  margin: 0;
+}
+.form, .list {
+  background: #2c2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  width: 50%;
+}
+button {
+  margin: 5px 3px;
+}
+.pokemon {
+  border-bottom: 1px solid #555;
+  padding: 5px 0;
+}
+table {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+th {
+  background: #444;
+}
+
+td {
+  background: #2c2c2c;
+}
+#suggestions {
+  background: #333;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 5px;
+}
+
+.suggest-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggest-item:hover {
+  background: #555;
+}
+.battle-options {
+  background: #242b2f;
+  border: 1px solid #3c4f55;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 12px;
+}
+.option-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0;
+}
+.option-row select,
+.option-row input[type="text"] {
+  background: #111827;
+  color: white;
+  border: 1px solid #52656c;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+.rank-row input[type="number"] {
+  width: 4ch;
+}
+.damage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.damage-section {
+  background: #182327;
+  border: 1px solid #2f6f73;
+  border-radius: 8px;
+  padding: 12px;
+}
+.damage-section h2 {
+  color: #7dd3fc;
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.damage-section-wide {
+  grid-column: 1 / -1;
+}
+.damage-target {
+  border-top: 1px solid #2f6f73;
+  padding-top: 10px;
+  margin-top: 12px;
+}
+.damage-target h3 {
+  color: #fef08a;
+  font-size: 16px;
+  margin: 0;
+}
+.damage-move {
+  background: #202a2e;
+  border: 1px solid #3c4f55;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+}
+.damage-move strong {
+  color: #facc15;
+}
+.damage-move span {
+  color: #a7f3d0;
+}
+[id^="moveSuggestions"] {
+  background: #333;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 5px;
+}
+.nav-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  transition: 0.2s;
+}
+
+/* 水色 */
+.blue {
+  background: #4fc3f7;
+}
+
+.blue:hover {
+  background: #29b6f6;
+}
+
+/* 黄色 */
+.yellow {
+  background: #fff176;
+}
+
+.yellow:hover {
+  background: #ffee58;
+}
+
+#leftPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#rightPanel {
+  position: fixed;
+  font-size: 14px;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  padding: 10px;
+  overflow-y: auto;
+}
+.enemy-panel {
+  width: 100%;
+  background: #2c2c2c;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.enemy-box {
+  border: 1px solid #555;
+  padding: 30px;
+  margin-bottom: 15px;
+}
+
+.enemy-box textarea {
+  width: 100%;
+  height: 60px;
+  background: #1e1e1e;
+  color: white;
+}
+#mainContent {
+  margin-left: 260px;
+  margin-right: 310px;
+  top: 0;
+}
+.enemy-party-list {
+  display: grid;
+  gap: 10px;
+}
+.enemy-party-card {
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 10px;
+  background: #242424;
+}
+.enemy-card-header,
+.enemy-name-row,
+.enemy-move-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.enemy-card-header {
+  justify-content: space-between;
+}
+.enemy-card-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.enemy-name-row input,
+.enemy-move-row input {
+  flex: 1 1 7em;
+  min-width: 0;
+}
+.enemy-moves {
+  margin-top: 8px;
+}
+.enemy-move-row {
+  margin-top: 6px;
+}
+.enemy-moves textarea {
+  width: 100%;
+  height: 54px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  background: #1e1e1e;
+  color: white;
+}
+.enemy-suggestions,
+.enemy-move-suggestions {
+  background: #333;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 5px;
+}

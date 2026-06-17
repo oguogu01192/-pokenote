@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>パーティ登録</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="wazadata.js"></script>
+<script src="pokedata.js"></script>
+
+<script src="utils.js"></script>
+<script src="moves.js"></script>
+<script src="pokemon.js"></script>
+<script src="sc.js"></script>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>パーティ登録</h1>
+  <a href="battle.html" class="nav-btn yellow">対戦画面へ</a>
+</div>
+
+<div class="container">
+  <div class="form">
+    <h2>ポケモン入力</h2>
+
+    名前：
+    <input oninput="updateStats(); updateSuggestions()" type="text" id="name">
+    <div id="suggestions"></div><br>
+
+    タイプ：
+    <input type="text" id="type1" placeholder="タイプ1">
+    <input type="text" id="type2" placeholder="タイプ2"><br>
+
+    持ち物：
+    <input type="text" id="item"><br>
+
+    努力値：
+    H<input oninput="updateStats()" type="number" id="h" value="0">
+    A<input oninput="updateStats()" type="number" id="a" value="0">
+    B<input oninput="updateStats()" type="number" id="b" value="0">
+    C<input oninput="updateStats()" type="number" id="c" value="0">
+    D<input oninput="updateStats()" type="number" id="d" value="0">
+    S<input oninput="updateStats()" type="number" id="s" value="0"><br>
+
+    <h3>種族値</h3>
+    <table border="1">
+      <tr>
+        <th></th><th>HP</th><th>A</th><th>B</th><th>C</th><th>D</th><th>S</th>
+      </tr>
+      <tr>
+        <td>通常</td>
+        <td id="bh1">-</td>
+        <td id="ba1">-</td>
+        <td id="bb1">-</td>
+        <td id="bc1">-</td>
+        <td id="bd1">-</td>
+        <td id="bs1">-</td>
+      </tr>
+      <tr>
+        <td>メガ</td>
+        <td id="bh2">-</td>
+        <td id="ba2">-</td>
+        <td id="bb2">-</td>
+        <td id="bc2">-</td>
+        <td id="bd2">-</td>
+        <td id="bs2">-</td>
+      </tr>
+    </table>
+
+    <h3>実数値</h3>
+    <table border="1">
+      <tr>
+        <th></th><th>HP</th><th>A</th><th>B</th><th>C</th><th>D</th><th>S</th>
+      </tr>
+      <tr>
+        <td>通常</td>
+        <td id="rh1">-</td>
+        <td id="ra1">-</td>
+        <td id="rb1">-</td>
+        <td id="rc1">-</td>
+        <td id="rd1">-</td>
+        <td id="rs1">-</td>
+      </tr>
+      <tr>
+        <td>メガ</td>
+        <td id="rh2">-</td>
+        <td id="ra2">-</td>
+        <td id="rb2">-</td>
+        <td id="rc2">-</td>
+        <td id="rd2">-</td>
+        <td id="rs2">-</td>
+      </tr>
+    </table>
+
+    <br>
+    選出：
+    <input type="checkbox" id="selected">
+    <button onclick="addOrUpdate()">追加 / 更新</button>
+    <button onclick="saveParty()">保存</button>
+
+    <h3>技入力</h3>
+    技：
+    <input type="text" id="move" oninput="updateMove(); updateMoveSuggestionsSingle()">
+    <div id="moveSuggestions"></div>
+
+    <h3>技データ</h3>
+    <p>
+      威力：<span id="power">-</span><br>
+      PP：<span id="pp">-</span><br>
+      効果：<span id="effect">-</span>
+    </p>
+
+    <div id="moves">
+      <div>1: <input type="text" id="move1" oninput="updateMovePP(1); updateMoveSuggestions(1)"> PP:<span id="pp1">-</span> <button onclick="useMove(1)">使用</button><div id="moveSuggestions1"></div></div>
+      <div>2: <input type="text" id="move2" oninput="updateMovePP(2); updateMoveSuggestions(2)"> PP:<span id="pp2">-</span> <button onclick="useMove(2)">使用</button><div id="moveSuggestions2"></div></div>
+      <div>3: <input type="text" id="move3" oninput="updateMovePP(3); updateMoveSuggestions(3)"> PP:<span id="pp3">-</span> <button onclick="useMove(3)">使用</button><div id="moveSuggestions3"></div></div>
+      <div>4: <input type="text" id="move4" oninput="updateMovePP(4); updateMoveSuggestions(4)"> PP:<span id="pp4">-</span> <button onclick="useMove(4)">使用</button><div id="moveSuggestions4"></div></div>
+    </div>
+  </div>
+
+  <div class="list">
+    <h2>パーティ一覧</h2>
+    <div id="partyList"></div>
+  </div>
+</div>
+
+</body>
+</html>

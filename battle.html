@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>対戦画面</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="wazadata.js"></script>
+<script src="pokedata.js"></script>
+<script src="tokuseidata.js"></script>
+<script src="dogudata.js"></script>
+
+<script src="utils.js"></script>
+<script src="moves.js"></script>
+<script src="enemy.js"></script>
+<script src="pokemon.js"></script>
+<script src="sc.js"></script>
+<script src="damage.js"></script>
+</head>
+<body>
+<div id="mainContent">
+  <div class="page-header">
+    <h1>対戦画面</h1>
+    <a href="party.html" class="nav-btn blue">パーティ画面へ</a>
+  </div>
+
+  <div id="myActive"></div>
+  <div id="enemyActiveDisplay"></div>
+
+  <div id="battleOptions" class="battle-options">
+    <div class="option-row">
+      フィールド：
+      <select id="field" onchange="updateDamageCalc()">
+        <option value="なし">なし</option>
+        <option value="エレキフィールド">エレキフィールド</option>
+        <option value="グラスフィールド">グラスフィールド</option>
+        <option value="ミストフィールド">ミストフィールド</option>
+        <option value="サイコフィールド">サイコフィールド</option>
+      </select>
+
+      天気：
+      <select id="weather" onchange="updateDamageCalc()">
+        <option value="なし">なし</option>
+        <option value="晴れ">晴れ</option>
+        <option value="雨">雨</option>
+        <option value="砂嵐">砂嵐</option>
+        <option value="雪">雪</option>
+      </select>
+
+      急所：
+      <input type="checkbox" id="critical" onchange="updateDamageCalc()">
+    </div>
+
+    <div class="option-row">
+      自分特性：
+      <input type="text" id="myAbility" list="abilityOptions" placeholder="なし" oninput="updateDamageCalc()">
+      自分道具：
+      <input type="text" id="myItemOverride" list="itemOptions" placeholder="保存した持ち物" oninput="updateDamageCalc()">
+    </div>
+
+    <div class="option-row">
+      相手特性：
+      <input type="text" id="enemyAbility" list="abilityOptions" placeholder="なし" oninput="updateDamageCalc()">
+      相手道具：
+      <input type="text" id="enemyItem" list="itemOptions" placeholder="なし" oninput="updateDamageCalc()">
+    </div>
+
+    <div class="option-row rank-row">
+      自分ランク：
+      A<input type="number" id="myRankA" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      C<input type="number" id="myRankC" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      B<input type="number" id="myRankB" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      D<input type="number" id="myRankD" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+    </div>
+
+    <div class="option-row rank-row">
+      相手ランク：
+      A<input type="number" id="enemyRankA" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      C<input type="number" id="enemyRankC" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      B<input type="number" id="enemyRankB" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+      D<input type="number" id="enemyRankD" value="0" min="-6" max="6" onchange="updateDamageCalc()">
+    </div>
+
+    <datalist id="abilityOptions">
+      <option value="なし">
+      <option value="ちからもち">
+      <option value="ヨガパワー">
+      <option value="てきおうりょく">
+      <option value="もうか">
+      <option value="げきりゅう">
+      <option value="しんりょく">
+      <option value="むしのしらせ">
+      <option value="サンパワー">
+    </datalist>
+
+    <datalist id="itemOptions">
+      <option value="なし">
+      <option value="こだわりハチマキ">
+      <option value="こだわりメガネ">
+      <option value="いのちのたま">
+      <option value="たつじんのおび">
+      <option value="とつげきチョッキ">
+      <option value="しんかのきせき">
+    </datalist>
+  </div>
+
+  <div id="damageCalc"></div>
+</div>
+
+<div class="container">
+  <div class="form">
+    <div id="leftPanel">
+      <h2>自分の選出</h2>
+      <div id="myParty"></div>
+    </div>
+
+    <div id="rightPanel">
+      <div class="enemy-panel">
+        <h2>相手のパーティ</h2>
+        <button type="button" onclick="resetEnemy()">リセット</button>
+        <div id="enemyPartyList" class="enemy-party-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener("load", () => {
+  loadBattleParty();
+});
+</script>
+
+</body>
+</html>
