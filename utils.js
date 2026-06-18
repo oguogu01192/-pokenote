@@ -1,12 +1,29 @@
 const NATURES = {
-  "ようき": { up: "s", down: "c" },
+  "さみしがり": { up: "a", down: "b" },
   "いじっぱり": { up: "a", down: "c" },
-  "ひかえめ": { up: "c", down: "a" },
-  "おくびょう": { up: "s", down: "a" },
+  "やんちゃ": { up: "a", down: "d" },
+  "ゆうかん": { up: "a", down: "s" },
+
   "ずぶとい": { up: "b", down: "a" },
   "わんぱく": { up: "b", down: "c" },
+  "のうてんき": { up: "b", down: "d" },
+  "のんき": { up: "b", down: "s" },
+
+  "ひかえめ": { up: "c", down: "a" },
+  "おっとり": { up: "c", down: "b" },
+  "うっかりや": { up: "c", down: "d" },
+  "れいせい": { up: "c", down: "s" },
+
+  "おだやか": { up: "d", down: "a" },
+  "おとなしい": { up: "d", down: "b" },
   "しんちょう": { up: "d", down: "c" },
-  "おだやか": { up: "d", down: "a" }
+  "なまいき": { up: "d", down: "s" },
+
+  "おくびょう": { up: "s", down: "a" },
+  "せっかち": { up: "s", down: "b" },
+  "ようき": { up: "s", down: "c" },
+  "むじゃき": { up: "s", down: "d" },
+  "まじめ": { up: "", down: "" }
 };
 function $(id) {
   return document.getElementById(id);

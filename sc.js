@@ -136,5 +136,3 @@ function clearForm() {
     currentPP[i] = 0;
   }
 }
-document.getElementById("nature")
-        .addEventListener("input", updateStats);

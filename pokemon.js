@@ -249,4 +249,6 @@ window.addEventListener("load", () => {
   if (document.getElementById("myParty")) {
     loadBattleParty();
   }
+  document.getElementById("nature")
+        .addEventListener("input", updateStats);
 });
