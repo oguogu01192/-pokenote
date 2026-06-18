@@ -18,6 +18,7 @@ function addOrUpdate() {
       document.getElementById("type2").value
     ],
     item: document.getElementById("item").value,
+    nature: document.getElementById("nature").value,
     moves: [1, 2, 3, 4].map(num =>
       document.getElementById("move" + num).value
     )
@@ -57,7 +58,7 @@ function editPokemon(index) {
   document.getElementById("type1").value = p.types?.[0] || "";
   document.getElementById("type2").value = p.types?.[1] || "";
   document.getElementById("item").value = p.item || "";
-
+  document.getElementById("nature").value = p.nature || "";
   for (let i = 1; i <= 4; i++) {
     document.getElementById("move" + i).value = p.moves?.[i - 1] || "";
     updateMovePP(i);
@@ -118,7 +119,9 @@ ${p.selected ? '<span style="color:yellow;">★選出</span>' : ""}<br>`;
     if (p.item) {
       html += `持ち物：${p.item}<br>`;
     }
-
+    if (p.nature) {
+     html += `性格：${p.nature}<br>`;
+    }
     const moveText = (p.moves || []).filter(move => move).join(" / ");
 
     if (moveText) {

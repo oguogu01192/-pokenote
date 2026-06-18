@@ -54,6 +54,7 @@ function updateStats() {
   const c = Number(document.getElementById("c").value);
   const d = Number(document.getElementById("d").value);
   const s = Number(document.getElementById("s").value);
+  const nature = document.getElementById("nature").value;
 
   if (!mega) {
     ["bh2","ba2","bb2","bc2","bd2","bs2",
@@ -69,12 +70,23 @@ function updateStats() {
     document.getElementById("bd1").textContent = normal.d;
     document.getElementById("bs1").textContent = normal.s;
 
-    document.getElementById("rh1").textContent = normal.h + h + 75;
-    document.getElementById("ra1").textContent = normal.a + a + 20;
-    document.getElementById("rb1").textContent = normal.b + b + 20;
-    document.getElementById("rc1").textContent = normal.c + c + 20;
-    document.getElementById("rd1").textContent = normal.d + d + 20;
-    document.getElementById("rs1").textContent = normal.s + s + 20;
+   document.getElementById("rh1").textContent =
+  calcStat(normal.h, h, "h", nature, true);
+
+document.getElementById("ra1").textContent =
+  calcStat(normal.a, a, "a", nature);
+
+document.getElementById("rb1").textContent =
+  calcStat(normal.b, b, "b", nature);
+
+document.getElementById("rc1").textContent =
+  calcStat(normal.c, c, "c", nature);
+
+document.getElementById("rd1").textContent =
+  calcStat(normal.d, d, "d", nature);
+
+document.getElementById("rs1").textContent =
+  calcStat(normal.s, s, "s", nature);
   }
 
   if (mega) {
@@ -85,12 +97,23 @@ function updateStats() {
     document.getElementById("bd2").textContent = mega.d;
     document.getElementById("bs2").textContent = mega.s;
 
-    document.getElementById("rh2").textContent = mega.h + h + 75;
-    document.getElementById("ra2").textContent = mega.a + a + 20;
-    document.getElementById("rb2").textContent = mega.b + b + 20;
-    document.getElementById("rc2").textContent = mega.c + c + 20;
-    document.getElementById("rd2").textContent = mega.d + d + 20;
-    document.getElementById("rs2").textContent = mega.s + s + 20;
+document.getElementById("rh2").textContent =
+  calcStat(mega.h, h, "h", nature, true);
+
+document.getElementById("ra2").textContent =
+  calcStat(mega.a, a, "a", nature);
+
+document.getElementById("rb2").textContent =
+  calcStat(mega.b, b, "b", nature);
+
+document.getElementById("rc2").textContent =
+  calcStat(mega.c, c, "c", nature);
+
+document.getElementById("rd2").textContent =
+  calcStat(mega.d, d, "d", nature);
+
+document.getElementById("rs2").textContent =
+  calcStat(mega.s, s, "s", nature);
   }
 }
 
@@ -106,10 +129,12 @@ function clearForm() {
   document.getElementById("type1").value = "";
   document.getElementById("type2").value = "";
   document.getElementById("item").value = "";
-
+  document.getElementById("nature").value = "";  
   for (let i = 1; i <= 4; i++) {
     document.getElementById("move" + i).value = "";
     document.getElementById("pp" + i).textContent = "-";
     currentPP[i] = 0;
   }
 }
+document.getElementById("nature")
+        .addEventListener("input", updateStats);

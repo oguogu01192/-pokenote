@@ -41,21 +41,25 @@ function getSavedPokemonTypes(pokemon) {
   return savedTypes.length ? savedTypes : getTypesFromBase(pokemon?.name);
 }
 
-function makeStats(base, ev = {}) {
+function makeStats(base, ev = {}, nature = "") {
   return {
-    h: calcStat(base.h, ev.h || 0, true),
-    a: calcStat(base.a, ev.a || 0),
-    b: calcStat(base.b, ev.b || 0),
-    c: calcStat(base.c, ev.c || 0),
-    d: calcStat(base.d, ev.d || 0),
-    s: calcStat(base.s, ev.s || 0)
+    h: calcStat(base.h, ev.h || 0, "h", nature, true),
+    a: calcStat(base.a, ev.a || 0, "a", nature),
+    b: calcStat(base.b, ev.b || 0, "b", nature),
+    c: calcStat(base.c, ev.c || 0, "c", nature),
+    d: calcStat(base.d, ev.d || 0, "d", nature),
+    s: calcStat(base.s, ev.s || 0, "s", nature)
   };
 }
 
 function getSavedPokemonStats(pokemon) {
   const base = baseStats[pokemon?.name];
   if (!base) return null;
-  return makeStats(base, pokemon.ev || {});
+return makeStats(
+  base,
+  pokemon.ev || {},
+  pokemon.nature || ""
+);
 }
 
 function getMyActivePokemon() {
