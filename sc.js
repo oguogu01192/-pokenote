@@ -1,3 +1,47 @@
+const natureInfoData = {
+  "さみしがり": { up: "A", down: "B" },
+  "いじっぱり": { up: "A", down: "C" },
+  "やんちゃ": { up: "A", down: "D" },
+  "ゆうかん": { up: "A", down: "S" },
+
+  "ずぶとい": { up: "B", down: "A" },
+  "わんぱく": { up: "B", down: "C" },
+  "のうてんき": { up: "B", down: "D" },
+  "のんき": { up: "B", down: "S" },
+
+  "ひかえめ": { up: "C", down: "A" },
+  "おっとり": { up: "C", down: "B" },
+  "うっかりや": { up: "C", down: "D" },
+  "れいせい": { up: "C", down: "S" },
+
+  "おだやか": { up: "D", down: "A" },
+  "おとなしい": { up: "D", down: "B" },
+  "しんちょう": { up: "D", down: "C" },
+  "なまいき": { up: "D", down: "S" },
+
+  "おくびょう": { up: "S", down: "A" },
+  "せっかち": { up: "S", down: "B" },
+  "ようき": { up: "S", down: "C" },
+  "むじゃき": { up: "S", down: "D" }
+};
+
+function updateNatureInfo() {
+
+  const nature = document.getElementById("nature").value;
+  const box = document.getElementById("natureInfo");
+
+  if (!natureInfoData[nature]) {
+    box.textContent = "無補正";
+    return;
+  }
+
+  const n = natureInfoData[nature];
+
+  box.innerHTML =
+    `<span style="color:#FF6347">${n.up}↑</span>
+     <span style="color:#00BFFF">${n.down}↓</span>`;
+}
+
 function updateSuggestions() {
   const input = document.getElementById("name").value;
   const box = document.getElementById("suggestions");
@@ -35,6 +79,7 @@ function updateSuggestions() {
 }
 
 function updateStats() {
+  updateNatureInfo();
   const input = document.getElementById("name").value;
 
   let normalName = input;
@@ -130,9 +175,16 @@ function clearForm() {
   document.getElementById("type2").value = "";
   document.getElementById("item").value = "";
   document.getElementById("nature").value = "";  
+  document.getElementById("natureInfo").textContent = "";
   for (let i = 1; i <= 4; i++) {
     document.getElementById("move" + i).value = "";
     document.getElementById("pp" + i).textContent = "-";
     currentPP[i] = 0;
   }
 }
+
+document.getElementById("nature")
+        .addEventListener("change", () => {
+            updateNatureInfo();
+            updateStats();
+        });
