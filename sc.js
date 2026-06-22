@@ -108,6 +108,11 @@ function updateStats() {
   }
 
   if (normal) {
+document.getElementById("type1").textContent =
+  normal.types[0] || "-";
+
+document.getElementById("type2").textContent =
+  normal.types[1] || "-";
     document.getElementById("bh1").textContent = normal.h;
     document.getElementById("ba1").textContent = normal.a;
     document.getElementById("bb1").textContent = normal.b;

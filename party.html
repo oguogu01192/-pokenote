@@ -9,6 +9,7 @@
 <script src="data/pokedata.js"></script>
 <script src="data/tokuseidata.js"></script>
 <script src="data/dogudata.js"></script>
+<script src="data/typedata.js"></script>
 
 <script src="utils.js"></script>
 <script src="moves.js"></script>
@@ -30,9 +31,9 @@
     <input oninput="updateStats(); updateSuggestions()" type="text" id="name">
     <div id="suggestions"></div><br>
 
-    タイプ：
-    <input type="text" id="type1" placeholder="タイプ1">
-    <input type="text" id="type2" placeholder="タイプ2"><br>
+タイプ：
+<span id="type1">-</span>
+<span id="type2">-</span><br>
 
     持ち物：
     <input type="text" id="item"><br>

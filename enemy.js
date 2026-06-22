@@ -140,9 +140,10 @@ function updateEnemyActive() {
 function updateEnemyStats(num) {
   const name = document.getElementById("enemy" + num).value;
   const box = document.getElementById("enemyStats" + num);
-  const stats = baseStats[name];
 
   if (!box) return;
+
+  const stats = baseStats[name];
 
   if (!stats) {
     box.textContent = "";
@@ -150,8 +151,25 @@ function updateEnemyStats(num) {
     return;
   }
 
+  // メガポケモン判定
+  if (name.startsWith("メガ")) {
+
+    const normalName = name.replace("メガ", "");
+    const normalStats = baseStats[normalName];
+
+    if (normalStats) {
+      box.innerHTML =
+        `通常：H${normalStats.h} A${normalStats.a} B${normalStats.b} C${normalStats.c} D${normalStats.d} S${normalStats.s}<br>` +
+        `メガ：H${stats.h} A${stats.a} B${stats.b} C${stats.c} D${stats.d} S${stats.s}`;
+
+      updateEnemyActive();
+      return;
+    }
+  }
+
   box.textContent =
     `種族値：H${stats.h} A${stats.a} B${stats.b} C${stats.c} D${stats.d} S${stats.s}`;
+
   updateEnemyActive();
 }
 function updateEnemySuggestions(num) {

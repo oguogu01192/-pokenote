@@ -273,3 +273,6 @@ td {
   overflow-y: auto;
   margin-top: 5px;
 }
+#item {
+    width: 125px;
+}
